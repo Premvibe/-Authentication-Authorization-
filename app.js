@@ -4,14 +4,13 @@ const bcrypt = require('bcrypt');
 
 // Sample route
 app.get('/', (req, res) => {
-
-  res.send('done');
+  const bcrypt = require('bcrypt');
+  const saltRounds = 10;
+  const myPlaintextPassword = 's0/\/\P4$$w0rD';
+  const someOtherPlaintextPassword = 'not_bacon';
 });
 
-app.get('/read', (req, res) => {
 
-  res.send('read');
-});
 
 // Start the server
 app.listen(3000);
