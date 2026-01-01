@@ -3,11 +3,14 @@ const app = express();
 const bcrypt = require('bcrypt');
 
 // Sample route
-app.get('/', (req, res) => {
-  const bcrypt = require('bcrypt');
-  const saltRounds = 10;
-  const myPlaintextPassword = 's0/\/\P4$$w0rD';
-  const someOtherPlaintextPassword = 'not_bacon';
+app.get('/', function (req, res) {
+  const result = bcrypt.compareSync(
+    "pololololoo",
+    "$2b$10$CpREqW5azU.I/tFfpPm3k.4XE9yLMeprSlKPtngWWprJKTVyIxLSm"
+  );
+
+  console.log(result); // true / false
+  res.send(result ? "Password Match" : "Password Incorrect");
 });
 
 
