@@ -1,16 +1,23 @@
 const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 // Sample route
 app.get('/', function (req, res) {
-  const result = bcrypt.compareSync(
-    "pololololoo",
-    "$2b$10$CpREqW5azU.I/tFfpPm3k.4XE9yLMeprSlKPtngWWprJKTVyIxLSm"
-  );
+  let tocken = jwt.sign({email : "prem@example.com"}, "secret" );
+  console.log(tocken);
 
-  console.log(result); // true / false
-  res.send(result ? "Password Match" : "Password Incorrect");
+
+
+
+  // const result = bcrypt.compareSync(
+  //   "pololololoo",
+  //   "$2b$10$CpREqW5azU.I/tFfpPm3k.4XE9yLMeprSlKPtngWWprJKTVyIxLSm"
+  // );
+
+  // console.log(result); // true / false
+  // res.send(result ? "Password Match" : "Password Incorrect");
 });
 
 
