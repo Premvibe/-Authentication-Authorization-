@@ -5,8 +5,8 @@ const jwt = require('jsonwebtoken');
 
 // Sample route
 app.get('/', function (req, res) {
-  let tocken = jwt.sign({email : "prem@example.com"}, "secret" );
-  console.log(tocken);
+  let token = jwt.sign({email : "prem@example.com"}, "secret" );
+  console.log(token);
 
 
 
