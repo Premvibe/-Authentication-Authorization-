@@ -6,11 +6,12 @@ app.set("view engine" , "ejs");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(Path2D.join(__dirname ,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(cookieParser());
 
 app.get('/', (req, res) => {
-    res.send('Hello, World!');
+    res.render('index');
 });
 
 app.listen(3000);
