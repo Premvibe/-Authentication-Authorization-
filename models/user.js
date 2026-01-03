@@ -1,11 +1,26 @@
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb:// localhost:127.0.0.1.27017/myapp`);
+
+mongoose.connect('mongodb://127.0.0.1:27017/myapp')
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log(err));
 
 const userSchema = new mongoose.Schema({
-    username: String,
-    email : String,
-    password: String,
-    age: Number 
+  username: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  age: {
+    type: Number
+  }
 });
 
-model.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);

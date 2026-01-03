@@ -3,17 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Create User</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <div class="w-full h-screen bg-zinc-900">
-    <form method="post" action="/create">
-      <input type="text" placeholder="Username" name="username" class="block my-5 p-2"/>
-      <input type="text" placeholder="Username" name="email" class="block my-5 p-2"/>
-      <input type="text" placeholder="Username" name="password" class="block my-5 p-2"/>
-      <input type="text" placeholder="Username" name="age" class="block my-5 p-2"/>
-      <input type="Submit" value="Create User" class="block my-5 p-2 bg-blue-500 text-white"/>
+  <div class="w-full min-h-screen bg-zinc-900 flex items-center justify-center">
+    
+    <form method="post" action="/create" class="bg-zinc-800 p-8 rounded-lg w-80 text-white">
+
+      <h2 class="text-2xl mb-6 text-center">Create User</h2>
+
+      <input
+        type="text"
+        placeholder="Username"
+        name="username"
+        required
+        class="block w-full mb-4 p-2 rounded text-black"
+      />
+
+      <input
+        type="email"
+        placeholder="Email"
+        name="email"
+        required
+        class="block w-full mb-4 p-2 rounded text-black"
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        required
+        class="block w-full mb-4 p-2 rounded text-black"
+      />
+
+      <input
+        type="number"
+        placeholder="Age"
+        name="age"
+        min="1"
+        class="block w-full mb-6 p-2 rounded text-black"
+      />
+
+      <input
+        type="submit"
+        value="Create User"
+        class="block w-full p-2 bg-blue-500 hover:bg-blue-600 rounded cursor-pointer"
+      />
+
     </form>
 
   </div>
