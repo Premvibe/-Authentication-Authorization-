@@ -17,15 +17,22 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.post('/create'(req, res) => {
-  let {username, email, password, age} = req.body;
-  bcrypt.hash(password, 10, (err, hash) => {
-  let createdUser = await userModel.create({
+app.post('/create', async (req, res) => {
+  let { username, email, password, age } = req.body;
+
+  bcrypt.hash(password, 10, async (err, hash) => {
+    if (err) return res.status(500).send(err.message);
+
+    let createdUser = await userModel.create({
       username,
       email,
       password: hash,
       age
-  })
-  jwt.sign({email},"shhhhhhhhh")
-  res.send
+    });
+
+    let token = jwt.sign({ email }, "shhhhhhhhh");
+    res.cookie('token', token);
+
+    res.send(createdUser);
+  });
 });
