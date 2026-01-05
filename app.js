@@ -4,6 +4,7 @@ const userModel = require('./models/user');
 const bcrypt = require('bcrypt');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
 app.set("view engine", "ejs");
 
@@ -16,37 +17,15 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.post('/create', async (req, res) => {
-  try {
-    const { username, email, password, age } = req.body;
-
-    // 1️⃣ Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // 2️⃣ Create user
-    const createdUser = await userModel.create({
+app.post('/create'(req, res) => {
+  let {username, email, password, age} = req.body;
+  bcrypt.hash(password, 10, (err, hash) => {
+  let createdUser = await userModel.create({
       username,
       email,
-      password: hashedPassword,
+      password: hash,
       age
-    });
-
-    // 3️⃣ Send safe response
-    res.status(201).send({
-      message: "User created successfully",
-      user: {
-        id: createdUser._id,
-        username: createdUser.username,
-        email: createdUser.email,
-        age: createdUser.age
-      }
-    });
-
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
-
-app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+  })
+  jwt.sign({email},"shhhhhhhhh")
+  res.send
 });
