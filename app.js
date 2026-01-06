@@ -41,13 +41,25 @@ app.get('/login', async  function(req, res) {
 
 })
 
-app.post('/login', async function(req, res) {
+app.post('/login', async function (req, res) {
   let User = await userModel.findOne({ email: req.body.email });
+
   if (!User) {
-    return res.send('User not found'); 
-    console.log(user.password);
+    return res.send('User not found');
   }
+
+  bcrypt.compare(req.body.password, User.password, function (err, result) {
+    if (result) {
+      let token = jwt.sign({ email: User.email }, "shhhhhhhhh");
+      res.cookie('token', token);
+      return res.send('Login successful');
+    } else {
+      return res.send('Invalid credentials');
+    }
+  });
 });
+
+
 
 app.get('/logout', function(req, res) {
   
