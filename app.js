@@ -36,10 +36,9 @@ app.post('/create', async (req, res) => {
     res.send(createdUser);
   });
 });
-
+app.post('/login', async  (req, res) {
 app.get('/logout', function(req, res) {
-  res.cookie('token','');
-  res.redirect('/');
+  
 
 })
 
