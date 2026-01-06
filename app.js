@@ -43,7 +43,10 @@ app.get('/login', async  function(req, res) {
 
 app.post('/login', async function(req, res) {
   let User = await userModel.findOne({ email: req.body.email });
-  console.log(User);
+  if (!User) {
+    return res.send('User not found'); 
+    console.log(user.password);
+  }
 });
 
 app.get('/logout', function(req, res) {
