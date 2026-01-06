@@ -37,4 +37,8 @@ app.post('/create', async (req, res) => {
   });
 });
 
+app.get('/logout', function(req, res) {
+
+})
+
 app.listen(3000);
