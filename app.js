@@ -36,7 +36,11 @@ app.post('/create', async (req, res) => {
     res.send(createdUser);
   });
 });
-app.post('/login', async  (req, res) {
+app.get('/login', async  function(req, res) {
+  res.render('login');
+
+})
+
 app.get('/logout', function(req, res) {
   
 
