@@ -4,7 +4,7 @@ const userModel = require('./models/user');
 const bcrypt = require('bcrypt');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken'); // ✅ keep ONLY this one
 
 app.set("view engine", "ejs");
 
@@ -36,3 +36,5 @@ app.post('/create', async (req, res) => {
     res.send(createdUser);
   });
 });
+
+app.listen(3000);
